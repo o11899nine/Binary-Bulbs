@@ -1,47 +1,63 @@
-body {
-    padding: 20px;
-    background-color: #000000;
-    color: #ffffff;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+:root {
+    font-size: 62.5%;
 }
 
-.lightbulb-container {
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0px 20px;
+    height: 100vh;
+    background-color: black;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+
+
+.card-container {
     width: 100%;
-    height: 40vh;
-    /* border: 1px solid yellow; */
+    height: 50vh;
+    /* border: 1px solid blue; */
     display: flex;
     justify-content: space-between;
     align-items: center;
 
 }
 
-.lightbulb {
-    /* border: 1px solid green; */
+.card {
+    /* border: 1px solid yellow; */
     height: 100%;
     width: 10%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.binary-value {
+    font-size: 4rem;
+    border: 1px solid rgb(125, 125, 125);
+    background-color: rgb(72, 72, 72);
+    padding: 10px 40px;
+    margin: 20px 20px;
+    border-radius: 15px;
+}
+
+.lightbulb {
+    /* border: 1px solid red; */
+    height: 100%;
+    width: 100%;
     background-size: contain;
     background-repeat: no-repeat;
     background-position: center;
-    background-image: url(img/darkmode_bulb_off.png);
+    background-image: url(img/lightbulb_off.png);
 }
 
 .lightbulb.on {
-    background-image: url(img/darkmode_bulb_on.png);
-}
-
-.light-mode {
-    background-color: #ffffff;
-    color: #000000;
-}
-
-.material-symbols-outlined {
-    font-size: 200px;
-    font-variation-settings:
-        'FILL' 0,
-        'wght' 400,
-        'GRAD' 0,
-        'opsz' 24
+    background-image: url(img/lightbulb_on.png);
 }
