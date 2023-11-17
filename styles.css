@@ -22,10 +22,14 @@ body {
     /* border: 1px solid green; */
     height: 100%;
     width: 10%;
-    background-image: url(img/darkmode_bulb_off.png);
     background-size: contain;
     background-repeat: no-repeat;
     background-position: center;
+    background-image: url(img/darkmode_bulb_off.png);
+}
+
+.lightbulb.on {
+    background-image: url(img/darkmode_bulb_on.png);
 }
 
 .light-mode {

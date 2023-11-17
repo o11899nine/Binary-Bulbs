@@ -1,18 +1,12 @@
-const colorModeBtn = document.getElementById("color-mode-btn");
+const lightBulbs = document.querySelectorAll(".lightbulb");
 
 
-colorModeBtn.addEventListener('click', toggleColorMode);
+lightBulbs.forEach(function (lightbulb) { 
+    lightbulb.addEventListener('click', switchBulb)
+});
 
-function toggleColorMode() {
-    
-    document.body.classList.toggle("light-mode");
 
-    if (colorModeBtn.innerText === "Light") {
-        colorModeBtn.innerText = "Dark";
-    } else {
-        colorModeBtn.innerText = "Light";
-    }
-    colorModeBtn.classList.toggle("btn-dark");
-    colorModeBtn.classList.toggle("btn-light");
-  
+function switchBulb() {
+    event.currentTarget.classList.toggle("on");
 }
+
