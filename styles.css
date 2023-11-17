@@ -4,9 +4,11 @@
 
 * {
     box-sizing: border-box;
+    
 }
 
 body {
+    font-family: 'Roboto', sans-serif;
     margin: 0px 20px;
     height: 100vh;
     background-color: black;
@@ -61,3 +63,12 @@ body {
 .lightbulb.on {
     background-image: url(img/lightbulb_on.png);
 }
+
+.card-visibility-btn {
+    font-family: 'Roboto', sans-serif;
+    background-color: transparent;
+    color: white;
+    border: 1px none;
+    padding: 15px 15px;
+}
+
