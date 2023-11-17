@@ -41,13 +41,24 @@ body {
     justify-content: center;
 }
 
-.binary-value {
+.value-display {
+    display: flex;
+    align-items: center;
+    justify-content: center;
     font-size: 4rem;
     border: 1px solid rgb(125, 125, 125);
     background-color: rgb(72, 72, 72);
     padding: 10px 40px;
     margin: 20px 20px;
+    height: 100px;
+    width: 100px;
     border-radius: 15px;
+}
+
+.value-display.on {
+    background-color: #FFD000;
+    color: black;
+    border-color: white;
 }
 
 .lightbulb {
@@ -58,6 +69,10 @@ body {
     background-repeat: no-repeat;
     background-position: center;
     background-image: url(img/lightbulb_off.png);
+}
+
+.hidden {
+    visibility: hidden;
 }
 
 .lightbulb.on {

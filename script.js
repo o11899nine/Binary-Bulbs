@@ -1,11 +1,19 @@
 const lightBulbs = document.querySelectorAll(".lightbulb");
 const cardVisibilityButtons = document.querySelectorAll(".card-visibility-btn")
 const allCardsVisibilityButton = document.querySelector(".all-cards-visibility-btn")
+const allValuesVisibilityButton = document.querySelector(".all-values-visibility-btn")
+const valueDisplays = document.querySelectorAll(".value-display")
 const cards = document.querySelectorAll(".card")
 
 
+valueDisplays.forEach(function (valueDisplay) {
+    valueDisplay.addEventListener('click', function() {
+        toggleSingleValueVisibility(valueDisplay);
+    });
+});
+
 lightBulbs.forEach(function (lightbulb) { 
-    lightbulb.addEventListener('click', toggleLight)
+    lightbulb.addEventListener('click', toggleLight);
 });
 
 cardVisibilityButtons.forEach(function (button) {
@@ -15,40 +23,104 @@ cardVisibilityButtons.forEach(function (button) {
     });
 });
 
-allCardsVisibilityButton.addEventListener('click', toggleAllCardsVisibility);
+allCardsVisibilityButton.addEventListener('click', toggleAllCards);
+allValuesVisibilityButton.addEventListener('click', toggleAllValues);
 
+function toggleSingleValueVisibility(valueDisplay) {
+    let binaryValue = valueDisplay.getAttribute("data-binaryValue");
+    if (valueDisplay.innerText === "") {
+        valueDisplay.innerText = binaryValue;
+    } else {
+        valueDisplay.innerText = "";  
+    }
+}
 function toggleSingleCardVisibility(card) {
-    let binaryValue = card.children[0];
+    let valueDisplay = card.children[0];
     let bulb = card.children[1];
     let button = card.children[2];
 
-    if (button.innerText === "+") {
-    binaryValue.style.visibility = "visible";
-    bulb.style.visibility = "visible";
-    button.innerText = "X";
-        
+    if (bulb.classList.contains("hidden")) {
+        valueDisplay.classList.toggle("hidden");
+        bulb.classList.toggle("hidden");
+        button.innerText = "X";
     } else {
-        binaryValue.style.visibility = "hidden";
-        bulb.style.visibility = "hidden";
+        valueDisplay.classList.toggle("hidden");
+        bulb.classList.toggle("hidden");
         button.innerText = "+";
         if (bulb.classList.contains("on")) {
             bulb.classList.toggle("on");
+            valueDisplay.classList.toggle("on");
         }
     }
 }
     
 function toggleLight() {
-    event.currentTarget.classList.toggle("on");
-    console.log(event.currentTarget.getAttribute("data-binaryValue"));
+    let lightbulb = event.currentTarget;
+    lightbulb.classList.toggle("on");
+    let card = lightbulb.parentElement;
+    let valueDisplay = card.children[0];
+    valueDisplay.classList.toggle("on");
+
 }
 
-function toggleAllCardsVisibility() {
-    if (allCardsVisibilityButton.innerText === "Hide all") {
-        allCardsVisibilityButton.innerText = "Show all";
-    } else {
-        allCardsVisibilityButton.innerText = "Hide all";
-    }
-    cards.forEach(function (card) { 
-        toggleSingleCardVisibility(card);
-});
+function toggleAllCards() {
+    allCardsVisibilityButton.innerText === "Hide all" ? hideAllCards() : showAllCards();
+}
+
+function hideAllCards() {
+    hideAllValues();
+    cards.forEach(function (card) {
+        let valueDisplay = card.children[0];
+        let bulb = card.children[1];
+        let button = card.children[2];
+        if (!bulb.classList.contains("hidden")) {
+            bulb.classList.toggle("hidden");
+            valueDisplay.classList.toggle("hidden");
+            button.innerText = "+";
+        }
+        if (bulb.classList.contains("on")) {
+            bulb.classList.toggle("on");
+            valueDisplay.classList.toggle("on");
+        }
+    });
+
+    allCardsVisibilityButton.innerText = "Show all";
+}
+    
+function showAllCards() {
+    cards.forEach(function (card) {
+        let valueDisplay = card.children[0];
+        let bulb = card.children[1];
+        let button = card.children[2];
+        if (bulb.classList.contains("hidden")) {
+            bulb.classList.toggle("hidden");
+            valueDisplay.classList.toggle("hidden");
+            button.innerText = "X";
+        }
+    });
+
+    allCardsVisibilityButton.innerText = "Hide all";
+    
+}
+
+
+function toggleAllValues() {
+    allValuesVisibilityButton.innerText === "Hide values" ? hideAllValues() : showAllValues();
+}
+
+function hideAllValues() {
+    valueDisplays.forEach(function (valueDisplay) {
+        valueDisplay.innerText = ""
+    });
+
+    allValuesVisibilityButton.innerText = "Show values";
+}
+
+function showAllValues() {
+    valueDisplays.forEach(function (valueDisplay) {
+        let binaryValue = valueDisplay.getAttribute("data-binaryValue");
+        valueDisplay.innerText = binaryValue;
+    });
+
+    allValuesVisibilityButton.innerText = "Hide values";
 }
