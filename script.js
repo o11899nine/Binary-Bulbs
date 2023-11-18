@@ -41,6 +41,7 @@ function toggleSingleCardVisibility(card) {
 
     if (bulb.classList.contains("hidden")) {
         valueDisplay.classList.toggle("hidden");
+        valueDisplay.innerText = "";
         bulb.classList.toggle("hidden");
         button.innerText = "X";
     } else {
@@ -88,6 +89,7 @@ function hideAllCards() {
 }
     
 function showAllCards() {
+    hideAllValues();
     cards.forEach(function (card) {
         let valueDisplay = card.children[0];
         let bulb = card.children[1];
