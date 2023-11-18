@@ -6,6 +6,7 @@ const bulbCounterMinusBtn = document.getElementById("bulb-counter-minus-btn");
 const bulbCounterPlusBtn = document.getElementById("bulb-counter-plus-btn");
 const bulbCounterDisplay = document.getElementById("bulb-counter-display");
 
+
 bulbCounterPlusBtn.addEventListener('click', function () {
     countBulbs("+")
 });
