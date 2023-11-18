@@ -1,9 +1,38 @@
+const cards = document.querySelectorAll(".card");
+const valueDisplays = document.querySelectorAll(".value-display");
 const lightBulbs = document.querySelectorAll(".lightbulb");
-const cardVisibilityButtons = document.querySelectorAll(".card-visibility-btn")
-const allCardsVisibilityButton = document.querySelector(".all-cards-visibility-btn")
-const allValuesVisibilityButton = document.querySelector(".all-values-visibility-btn")
-const valueDisplays = document.querySelectorAll(".value-display")
-const cards = document.querySelectorAll(".card")
+const allValuesVisibilityButton = document.querySelector(".all-values-visibility-btn");
+const bulbCounterMinusBtn = document.getElementById("bulb-counter-minus-btn");
+const bulbCounterPlusBtn = document.getElementById("bulb-counter-plus-btn");
+const bulbCounterDisplay = document.getElementById("bulb-counter-display");
+
+bulbCounterPlusBtn.addEventListener('click', function () {
+    countBulbs("+")
+});
+bulbCounterMinusBtn.addEventListener('click', function () {
+    countBulbs("-")
+});
+
+function countBulbs(operator) {
+    let numBulbs = parseInt(bulbCounterDisplay.value);
+    operator === "+" ? numBulbs += 1: numBulbs -= 1;
+    
+    if (numBulbs < 0) {
+        numBulbs = 0;
+    } else if (numBulbs > 8) {
+        numBulbs = 8;
+    }
+
+    bulbCounterDisplay.value = numBulbs;
+
+    cards.forEach(function (card) {
+        hideElement(card)
+    });
+
+    for (let i = 0; i < numBulbs; i++) {
+        showElement(cards[i])
+    }
+}
 
 
 valueDisplays.forEach(function (valueDisplay) {
@@ -16,14 +45,7 @@ lightBulbs.forEach(function (lightbulb) {
     lightbulb.addEventListener('click', toggleLight);
 });
 
-cardVisibilityButtons.forEach(function (button) {
-    button.addEventListener('click', function() {
-        const card = this.parentElement;
-        toggleSingleCardVisibility(card);
-    });
-});
 
-allCardsVisibilityButton.addEventListener('click', toggleAllCards);
 allValuesVisibilityButton.addEventListener('click', toggleAllValues);
 
 function toggleSingleValueVisibility(valueDisplay) {
@@ -125,4 +147,12 @@ function showAllValues() {
     });
 
     allValuesVisibilityButton.innerText = "Hide values";
+}
+
+function hideElement(element) {
+    element.style.visibility = "hidden";
+}
+
+function showElement(element) {
+    element.style.visibility = "visible";
 }
