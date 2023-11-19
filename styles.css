@@ -89,16 +89,13 @@ body {
     height: 100px;
     width: 100px;
     border-radius: 15px;
+    font-size: 4rem;
 }
 
 .decimal-display.on {
     background-color: #FFD000;
     color: black;
     border-color: white;
-}
-
-.decimal-value {
-    font-size: 4rem;
 }
 
 .bit {

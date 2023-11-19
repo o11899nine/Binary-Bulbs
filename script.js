@@ -2,7 +2,6 @@
 const bitCards = document.querySelectorAll(".bit-card");
 const bits = document.querySelectorAll(".bit");
 const decimalDisplays = document.querySelectorAll(".decimal-display");
-const decimalValues = document.querySelectorAll(".decimal-value")
 
 // Unique elements
 const addBitBtn = document.getElementById("add-bit-btn");
@@ -18,13 +17,18 @@ removeBitBtn.addEventListener('click', removeBit);
 bits.forEach((bit) => { bit.addEventListener('click', toggleBitOnOff) });
 
 decimalDisplays.forEach((display) => { display.addEventListener('click', toggleDecimalValue) });
-decimalValues.forEach((value) => { value.addEventListener('click', toggleDecimalValue) });
 
 
 function toggleDecimalValue(event) {
     let decimalDisplay = event.target;
-    let decimalValue = decimalDisplay.children[0];
-    toggleElementVisibility(decimalValue);
+    let bitCard = decimalDisplay.parentElement;
+    let decimalValue = bitCard.getAttribute("data-decimalValue");
+
+    if (decimalDisplay.innerText === "") {
+        decimalDisplay.innerText = decimalValue;
+    } else {
+        decimalDisplay.innerText = "";
+    }
 }
 
 function removeBit() {
