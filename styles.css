@@ -1,10 +1,42 @@
-:root {
+* {
+    box-sizing: border-box;
+}
+
+html {
     font-size: 62.5%;
 }
 
-* {
-    box-sizing: border-box;
-    
+h1 {
+    font-size: 7vh;
+}
+
+.prevent-select {
+    -webkit-user-select: none;
+    /* Safari */
+    -ms-user-select: none;
+    /* IE 10 and IE 11 */
+    user-select: none;
+    /* Standard syntax */
+}
+
+.button {
+    width: 150px;
+    text-align: center;
+    border-radius: 10px;
+    padding: 10px;
+    font-size: 2rem;
+    background-color: transparent;
+    border: 1px solid white;
+    color: white;
+}
+
+.button:hover {
+    background-color: rgb(37, 37, 37);
+    border: 1px solid white;
+}
+
+.button:active {
+    background-color: rgb(55, 55, 55);
 }
 
 body {
@@ -17,7 +49,6 @@ body {
     align-items: center;
     flex-direction: column;
     /* border: 1px solid red; */
-
 }
 
 .header {
@@ -27,7 +58,7 @@ body {
     justify-content: center;
 }
 
-.main {
+.byte {
     width: 100%;
     height: 50vh;
     /* border: 1px solid yellow; */
@@ -37,8 +68,55 @@ body {
     align-items: center;
 }
 
-.settings {
+.bit-card {
+    /* border: 1px solid yellow; */
+    height: 100%;
+    width: 10%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
 
+.decimal-display {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid rgb(125, 125, 125);
+    background-color: rgb(72, 72, 72);
+    padding: 10px 40px;
+    margin: 20px 20px;
+    height: 100px;
+    width: 100px;
+    border-radius: 15px;
+}
+
+.decimal-display.on {
+    background-color: #FFD000;
+    color: black;
+    border-color: white;
+}
+
+.decimal-value {
+    font-size: 4rem;
+}
+
+.bit {
+    /* border: 1px solid red; */
+    height: 100%;
+    width: 100%;
+    background-size: contain;
+    display: block;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-image: url(img/bulb_off.png);
+}
+
+.bit.on {
+    background-image: url(img/bulb_on.png);
+}
+
+.settings {
     height: 25vh;
     display: flex;
     flex-direction: column;
@@ -47,7 +125,13 @@ body {
     gap: 2vw;
 }
 
-#bulb-counter-display {
+#bit-counter {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#bit-counter-display {
     background-color: transparent;
     color: white;
     text-align: center;
@@ -73,100 +157,9 @@ body {
 .counter-btn:active {
     scale: 0.9;
 }
+
 .counter-btn:hover {
     background-color: transparent;
     color: white;
     border: 2px solid white;
 }
-
-
-h1 {
-    font-size: 7vh;
-}
-
-
-.button {
-    width: 150px;
-    text-align: center;
-    border-radius: 10px;
-    padding: 10px;
-    font-size: 2rem;
-    background-color: transparent;
-    border: 1px solid white;
-    color: white;
-}
-
-.button:hover{
-    background-color: rgb(37, 37, 37);
-    border: 1px solid white;
-}
-
-.button:active {
-    background-color: rgb(55, 55, 55);
-}
-
-
-
-
-.card {
-    /* border: 1px solid yellow; */
-    height: 100%;
-    width: 10%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-}
-
-.value-display {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 4rem;
-    border: 1px solid rgb(125, 125, 125);
-    background-color: rgb(72, 72, 72);
-    padding: 10px 40px;
-    margin: 20px 20px;
-    height: 100px;
-    width: 100px;
-    border-radius: 15px;
-}
-
-.value-display.on {
-    background-color: #FFD000;
-    color: black;
-    border-color: white;
-}
-
-.bulb-counter-container {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.lightbulb {
-    /* border: 1px solid red; */
-    height: 100%;
-    width: 100%;
-    background-size: contain;
-    background-repeat: no-repeat;
-    background-position: center;
-    background-image: url(img/lightbulb_off.png);
-}
-
-.hidden {
-    visibility: hidden;
-}
-
-.lightbulb.on {
-    background-image: url(img/lightbulb_on.png);
-}
-
-.card-visibility-btn {
-    font-family: 'Roboto', sans-serif;
-    background-color: transparent;
-    color: white;
-    border: 1px none;
-    padding: 15px 15px;
-}
-

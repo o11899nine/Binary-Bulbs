@@ -1,153 +1,74 @@
-const cards = document.querySelectorAll(".card");
-const valueDisplays = document.querySelectorAll(".value-display");
-const lightBulbs = document.querySelectorAll(".lightbulb");
-const allValuesVisibilityButton = document.querySelector(".all-values-visibility-btn");
-const bulbCounterMinusBtn = document.getElementById("bulb-counter-minus-btn");
-const bulbCounterPlusBtn = document.getElementById("bulb-counter-plus-btn");
-const bulbCounterDisplay = document.getElementById("bulb-counter-display");
+// Elements with same class
+const bitCards = document.querySelectorAll(".bit-card");
+const bits = document.querySelectorAll(".bit");
+const decimalDisplays = document.querySelectorAll(".decimal-display");
+const decimalValues = document.querySelectorAll(".decimal-value")
+
+// Unique elements
+const addBitBtn = document.getElementById("add-bit-btn");
+const bitCounterDisplay = document.getElementById("bit-counter-display");
+const removeBitBtn = document.getElementById("remove-bit-btn");
+const valuesBtn = document.querySelector("values-btn");
+
+// Button EventListeners
+addBitBtn.addEventListener('click', addBit);
+removeBitBtn.addEventListener('click', removeBit);
+
+// BitCard EventListeners
+bits.forEach((bit) => { bit.addEventListener('click', toggleBitOnOff) });
+
+decimalDisplays.forEach((display) => { display.addEventListener('click', toggleDecimalValue) });
+decimalValues.forEach((value) => { value.addEventListener('click', toggleDecimalValue) });
 
 
-bulbCounterPlusBtn.addEventListener('click', function () {
-    countBulbs("+")
-});
-bulbCounterMinusBtn.addEventListener('click', function () {
-    countBulbs("-")
-});
-
-function countBulbs(operator) {
-    let numBulbs = parseInt(bulbCounterDisplay.value);
-    operator === "+" ? numBulbs += 1: numBulbs -= 1;
-    
-    if (numBulbs < 0) {
-        numBulbs = 0;
-    } else if (numBulbs > 8) {
-        numBulbs = 8;
-    }
-
-    bulbCounterDisplay.value = numBulbs;
-
-    cards.forEach(function (card) {
-        hideElement(card)
-    });
-
-    for (let i = 0; i < numBulbs; i++) {
-        showElement(cards[i])
-    }
+function toggleDecimalValue(event) {
+    let decimalDisplay = event.target;
+    let decimalValue = decimalDisplay.children[0];
+    toggleElementVisibility(decimalValue);
 }
 
+function removeBit() {
+    let bitCount = bitCounterDisplay.getAttribute("data-bitCount");
+    if (bitCount > 0) {
+        bitCount--
+    };
+    
+    updateBitCounterDisplay(bitCount);
+    showBitCards(bitCount);
+}
 
-valueDisplays.forEach(function (valueDisplay) {
-    valueDisplay.addEventListener('click', function() {
-        toggleSingleValueVisibility(valueDisplay);
-    });
-});
+function addBit() {
+    let bitCount = bitCounterDisplay.getAttribute("data-bitCount");
+    if (bitCount < 8) {
+        bitCount++
+    };
+    
+    updateBitCounterDisplay(bitCount);
+    showBitCards(bitCount);
+}
 
-lightBulbs.forEach(function (lightbulb) { 
-    lightbulb.addEventListener('click', toggleLight);
-});
-
-
-allValuesVisibilityButton.addEventListener('click', toggleAllValues);
-
-function toggleSingleValueVisibility(valueDisplay) {
-    let binaryValue = valueDisplay.getAttribute("data-binaryValue");
-    if (valueDisplay.innerText === "") {
-        valueDisplay.innerText = binaryValue;
-    } else {
-        valueDisplay.innerText = "";  
+function showBitCards(bitCount) {
+    // Hide all bitCards
+    bitCards.forEach((bitCard => hideElement(bitCard)));
+    // Show BitCount amount of BitCards
+    for (let i = 0; i < bitCount; i++) {
+        showElement(bitCards[i]);
     }
 }
-function toggleSingleCardVisibility(card) {
-    let valueDisplay = card.children[0];
-    let bulb = card.children[1];
-    let button = card.children[2];
 
-    if (bulb.classList.contains("hidden")) {
-        valueDisplay.classList.toggle("hidden");
-        valueDisplay.innerText = "";
-        bulb.classList.toggle("hidden");
-        button.innerText = "X";
-    } else {
-        valueDisplay.classList.toggle("hidden");
-        bulb.classList.toggle("hidden");
-        button.innerText = "+";
-        if (bulb.classList.contains("on")) {
-            bulb.classList.toggle("on");
-            valueDisplay.classList.toggle("on");
-        }
-    }
-}
-    
-function toggleLight() {
-    let lightbulb = event.currentTarget;
-    lightbulb.classList.toggle("on");
-    let card = lightbulb.parentElement;
-    let valueDisplay = card.children[0];
-    valueDisplay.classList.toggle("on");
-}
-
-function toggleAllCards() {
-    allCardsVisibilityButton.innerText === "Hide all" ? hideAllCards() : showAllCards();
-}
-
-function hideAllCards() {
-    hideAllValues();
-    cards.forEach(function (card) {
-        let valueDisplay = card.children[0];
-        let bulb = card.children[1];
-        let button = card.children[2];
-        if (!bulb.classList.contains("hidden")) {
-            bulb.classList.toggle("hidden");
-            valueDisplay.classList.toggle("hidden");
-            button.innerText = "+";
-        }
-        if (bulb.classList.contains("on")) {
-            bulb.classList.toggle("on");
-            valueDisplay.classList.toggle("on");
-        }
-    });
-
-    allCardsVisibilityButton.innerText = "Show all";
-}
-    
-function showAllCards() {
-    hideAllValues();
-    cards.forEach(function (card) {
-        let valueDisplay = card.children[0];
-        let bulb = card.children[1];
-        let button = card.children[2];
-        if (bulb.classList.contains("hidden")) {
-            bulb.classList.toggle("hidden");
-            valueDisplay.classList.toggle("hidden");
-            button.innerText = "X";
-        }
-    });
-
-    allCardsVisibilityButton.innerText = "Hide all";
-    
+function updateBitCounterDisplay(bitCount) {
+    bitCounterDisplay.setAttribute("data-bitCount", bitCount);
+    bitCounterDisplay.innerText = bitCount;
 }
 
 
-function toggleAllValues() {
-    allValuesVisibilityButton.innerText === "Hide values" ? hideAllValues() : showAllValues();
-}
+function toggleBitOnOff(event) {
+    let bit = event.target;
+    let decimalDisplay =  bit.parentElement.children[0];
 
-function hideAllValues() {
-    valueDisplays.forEach(function (valueDisplay) {
-        valueDisplay.innerText = ""
-    });
-
-    allValuesVisibilityButton.innerText = "Show values";
-}
-
-function showAllValues() {
-    valueDisplays.forEach(function (valueDisplay) {
-        let binaryValue = valueDisplay.getAttribute("data-binaryValue");
-        valueDisplay.innerText = binaryValue;
-    });
-
-    allValuesVisibilityButton.innerText = "Hide values";
-}
+    bit.classList.toggle("on");
+    decimalDisplay.classList.toggle("on");
+}   
 
 function hideElement(element) {
     element.style.visibility = "hidden";
@@ -155,4 +76,12 @@ function hideElement(element) {
 
 function showElement(element) {
     element.style.visibility = "visible";
+}
+
+function toggleElementVisibility(element) {
+    if (element.style.visibility === "hidden") {
+        element.style.visibility = "visible";
+    } else {
+        element.style.visibility = "hidden";
+    }
 }
