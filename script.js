@@ -61,7 +61,6 @@ function toggleLight() {
     let card = lightbulb.parentElement;
     let valueDisplay = card.children[0];
     valueDisplay.classList.toggle("on");
-
 }
 
 function toggleAllCards() {
