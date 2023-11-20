@@ -1,5 +1,5 @@
 // Elements with same class
-const bitCards = document.querySelectorAll(".bit-card");
+const bitContainers = document.querySelectorAll(".bit-container");
 const bits = document.querySelectorAll(".bit");
 const decimalDisplays = document.querySelectorAll(".decimal-display");
 
@@ -7,28 +7,47 @@ const decimalDisplays = document.querySelectorAll(".decimal-display");
 const addBitBtn = document.getElementById("add-bit-btn");
 const bitCounterDisplay = document.getElementById("bit-counter-display");
 const removeBitBtn = document.getElementById("remove-bit-btn");
-const valuesBtn = document.querySelector("values-btn");
+const showValuesBtn = document.getElementById("show-values-btn");
+const hideValuesBtn = document.getElementById("hide-values-btn");
 
 // Button EventListeners
 addBitBtn.addEventListener('click', addBit);
 removeBitBtn.addEventListener('click', removeBit);
+showValuesBtn.addEventListener('click', showAllDecimalValues)
+hideValuesBtn.addEventListener('click', hideAllDecimalValues)
 
-// BitCard EventListeners
-bits.forEach((bit) => { bit.addEventListener('click', toggleBitOnOff) });
+// Bit EventListeners
+bits.forEach(bit => { bit.addEventListener('click', toggleBitOnOff) });
 
-decimalDisplays.forEach((display) => { display.addEventListener('click', toggleDecimalValue) });
+decimalDisplays.forEach(display => { display.addEventListener('click', toggleDecimalValue) });
 
 
+function showAllDecimalValues() {
+    decimalDisplays.forEach(decimalDisplay => {
+        showDecimalValue(decimalDisplay);
+    });
+}
+function hideAllDecimalValues() {
+    decimalDisplays.forEach(decimalDisplay => {
+        hideDecimalValue(decimalDisplay);
+    });
+}
 function toggleDecimalValue(event) {
-    let decimalDisplay = event.target;
-    let bitCard = decimalDisplay.parentElement;
-    let decimalValue = bitCard.getAttribute("data-decimalValue");
-
-    if (decimalDisplay.innerText === "") {
-        decimalDisplay.innerText = decimalValue;
+      
+    if (event.target.innerText === "") {
+        showDecimalValue(event.target);
     } else {
-        decimalDisplay.innerText = "";
+        hideDecimalValue(event.target);
     }
+}
+
+function showDecimalValue(decimalDisplay) {
+    let decimalValue = decimalDisplay.getAttribute("data-decimalValue");
+    decimalDisplay.innerText = decimalValue;
+}
+
+function hideDecimalValue(decimalDisplay) {
+    decimalDisplay.innerText = "";
 }
 
 function removeBit() {
@@ -38,7 +57,7 @@ function removeBit() {
     };
     
     updateBitCounterDisplay(bitCount);
-    showBitCards(bitCount);
+    showbitContainers(bitCount);
 }
 
 function addBit() {
@@ -48,15 +67,15 @@ function addBit() {
     };
     
     updateBitCounterDisplay(bitCount);
-    showBitCards(bitCount);
+    showbitContainers(bitCount);
 }
 
-function showBitCards(bitCount) {
-    // Hide all bitCards
-    bitCards.forEach((bitCard => hideElement(bitCard)));
-    // Show BitCount amount of BitCards
+function showbitContainers(bitCount) {
+    // Hide all bitContainers
+    bitContainers.forEach(bitContainer => hideElement(bitContainer));
+    // Show BitCount amount of bitContainers
     for (let i = 0; i < bitCount; i++) {
-        showElement(bitCards[i]);
+        showElement(bitContainers[i]);
     }
 }
 

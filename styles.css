@@ -68,7 +68,7 @@ body {
     align-items: center;
 }
 
-.bit-card {
+.bit-container {
     /* border: 1px solid yellow; */
     height: 100%;
     width: 10%;
@@ -82,20 +82,16 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
-    border: 1px solid rgb(125, 125, 125);
-    background-color: rgb(72, 72, 72);
-    padding: 10px 40px;
-    margin: 20px 20px;
     height: 100px;
+    color: rgb(200, 200, 200);
     width: 100px;
-    border-radius: 15px;
+    border: 1px solid rgb(100, 100, 100);
     font-size: 4rem;
+    border-radius: 100px;
 }
 
 .decimal-display.on {
-    background-color: #FFD000;
-    color: black;
-    border-color: white;
+    color: #FFD000;
 }
 
 .bit {
