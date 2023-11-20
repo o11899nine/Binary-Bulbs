@@ -6,16 +6,20 @@ const decimalDisplays = document.querySelectorAll(".decimal-display");
 // Unique elements
 const addBitBtn = document.getElementById("add-bit-btn");
 const bitCounter = document.getElementById("bit-counter-display");
+const bitTypeBtn = document.getElementById("bittype-btn");
 const colormodeBtn = document.getElementById("colormode-btn");
 const hideValuesBtn = document.getElementById("hide-values-btn");
 const removeBitBtn = document.getElementById("remove-bit-btn");
+const resetBtn = document.getElementById("reset-btn");
 const showValuesBtn = document.getElementById("show-values-btn");
 
 // Button EventListeners
 addBitBtn.addEventListener('click', addBitContainer);
+bitTypeBtn.addEventListener('click', toggleBitType)
 colormodeBtn.addEventListener('click', toggleColorMode);
 hideValuesBtn.addEventListener('click', hideAllDecimalValues)
 removeBitBtn.addEventListener('click', removeBitContainer);
+resetBtn.addEventListener('click', resetBits)
 showValuesBtn.addEventListener('click', showAllDecimalValues)
 
 // Bit EventListeners
@@ -52,7 +56,7 @@ function toggleDecimalValueShowHide(event) {
     }
 }
 
-// Functions for bit containers
+// Functions for byte
 function removeBitContainer() {
     let bitCount = bitCounter.getAttribute("data-bitCount");
     if (bitCount > 0) {
@@ -88,6 +92,26 @@ function showBitContainers(bitCount) {
     }
 }
 
+function toggleBitType() {
+    bits.forEach(bit => {
+        if (bit.classList.contains("bulb")) {
+            bit.classList.remove("bulb");
+            bit.classList.add("digit");
+        } else {
+            bit.classList.remove("digit");
+            bit.classList.add("bulb");
+
+        }
+
+    });
+}
+
+function resetBits() {
+    bits.forEach(bit => {
+        turnBitOff(bit)
+    });
+}
+
 // Bit counter
 function updateBitCounter(bitCount) {
     bitCounter.setAttribute("data-bitCount", bitCount);
@@ -95,24 +119,25 @@ function updateBitCounter(bitCount) {
 }
 
 // Functions for bits
-function turnBitOff(bit, decimalDisplay) {
+function turnBitOff(bit) {
+    let decimalDisplay = bit.parentElement.children[0];
     bit.classList.remove("on");
     decimalDisplay.classList.remove("on");
 }
 
-function turnBitOn(bit, decimalDisplay) {
+function turnBitOn(bit) {
+    let decimalDisplay = bit.parentElement.children[0];
     bit.classList.add("on");
     decimalDisplay.classList.add("on");
 }
 
 function toggleBitOnOff(event) {
     let bit = event.target;
-    let decimalDisplay = bit.parentElement.children[0];
-
+    
     if (bit.classList.contains("on")) {
-        turnBitOff(bit, decimalDisplay);
+        turnBitOff(bit);
     } else {
-        turnBitOn(bit, decimalDisplay);
+        turnBitOn(bit);
     }
 }   
 

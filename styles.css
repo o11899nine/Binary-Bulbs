@@ -56,12 +56,16 @@ h1 {
 .button:hover,
 .decimal-display:hover {
     background-color: var(--button-hover-color);
+    cursor: pointer;
 }
 
 .button:active,
 .decimal-display:active {
     background-color: var(--button-active-color);
+    cursor: pointer;
+    scale: 0.95;
 }
+
 
 body {
     font-family: 'Roboto', sans-serif;
@@ -122,15 +126,37 @@ body {
     /* border: 1px solid red; */
     height: 100%;
     width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+}
+
+.bit.bulb {
     background-size: contain;
-    display: block;
     background-repeat: no-repeat;
     background-position: center;
     background-image: var(--bulb-off);
+
 }
 
-.bit.on {
+.bit.bulb.on {
     background-image: var(--bulb-on);
+}
+
+.bit.digit {
+    font-size: 15rem;
+}
+.bit.digit.on:before {
+    content: "1";
+}
+
+.bit.digit:before {
+    content: "0";
+}
+
+.bit:hover {
+    cursor: pointer;
 }
 
 .settings {
@@ -140,6 +166,14 @@ body {
     align-items: center;
     justify-content: center;
     gap: 2vw;
+}
+
+#colormode-btn {
+    background: none;
+}
+
+#colormode-btn:hover {
+    cursor: pointer;
 }
 
 #bit-counter {
@@ -171,15 +205,17 @@ body {
     border: 2px solid transparent;
 }
 
-.counter-btn:active {
-    scale: 0.9;
-}
-
 .counter-btn:hover {
+    cursor: pointer;
     background-color: transparent;
     color: var(--primary-color);
     border: 2px solid var(--primary-color);
 }
+
+.counter-btn:active {
+    scale: 0.95;
+}
+
 
 #value-buttons-container {
     display: flex;
