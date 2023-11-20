@@ -156,3 +156,8 @@ body {
     color: white;
     border: 2px solid white;
 }
+
+#value-buttons-container {
+    display: flex;
+    gap: 20px;
+}
