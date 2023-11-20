@@ -6,12 +6,14 @@ const decimalDisplays = document.querySelectorAll(".decimal-display");
 // Unique elements
 const addBitBtn = document.getElementById("add-bit-btn");
 const bitCounter = document.getElementById("bit-counter-display");
+const colormodeBtn = document.getElementById("colormode-btn");
 const hideValuesBtn = document.getElementById("hide-values-btn");
 const removeBitBtn = document.getElementById("remove-bit-btn");
 const showValuesBtn = document.getElementById("show-values-btn");
 
 // Button EventListeners
 addBitBtn.addEventListener('click', addBitContainer);
+colormodeBtn.addEventListener('click', toggleColorMode);
 hideValuesBtn.addEventListener('click', hideAllDecimalValues)
 removeBitBtn.addEventListener('click', removeBitContainer);
 showValuesBtn.addEventListener('click', showAllDecimalValues)
@@ -130,4 +132,9 @@ function toggleElementShowHide(element) {
     } else {
         element.style.visibility = "hidden";
     }
+}
+
+// Colormode
+function toggleColorMode() {
+    document.documentElement.classList.toggle("lightmode");
 }

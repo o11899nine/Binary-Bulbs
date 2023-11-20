@@ -1,3 +1,7 @@
+:root {
+    font-size: 62.5%;
+}
+
 html {
     --background-color: rgb(0,0,0);
     --primary-color: rgb(255,255,255);
@@ -5,8 +9,25 @@ html {
     --tertiary-color: rgb(100,100,100);
     --button-hover-color: rgb(15,15,15);
     --button-active-color: rgb(25,25,25);
-    font-size: 62.5%;
+    --active-decimal-background-color:rgb(255, 208, 0);
+    --active-decimal-text-color: rgb(0, 0, 0);
+    --bulb-on: url(img/darkmode_bulb_on.png);
+    --bulb-off: url(img/darkmode_bulb_off.png);
+    --mode-icon: url(img/darkmode_colormode_icon.png);
 }
+
+html.lightmode {
+    --background-color: rgb(255, 255, 255);
+    --primary-color: rgb(0, 0, 0);
+    --secondary-color: rgb(55, 55, 55);
+    --tertiary-color: rgb(155, 155, 155);
+    --button-hover-color: rgb(240, 240, 240);
+    --button-active-color: rgb(230, 230, 230);
+    --bulb-on: url(img/lightmode_bulb_on.png);
+    --bulb-off: url(img/lightmode_bulb_off.png);
+    --mode-icon: url(img/lightmode_colormode_icon.png);
+}
+
 * {
     box-sizing: border-box;
 }
@@ -32,12 +53,13 @@ h1 {
     color: var(--primary-color);
 }
 
-.button:hover {
+.button:hover,
+.decimal-display:hover {
     background-color: var(--button-hover-color);
-    border: 1px solid var(--primary-color);
 }
 
-.button:active {
+.button:active,
+.decimal-display:active {
     background-color: var(--button-active-color);
 }
 
@@ -84,15 +106,17 @@ body {
     height: 100px;
     color: var(--secondary-color);
     width: 100px;
-    border: 1px solid var(--tertiary-color);
+    border: 2px solid var(--tertiary-color);
     font-size: 4rem;
     border-radius: 100px;
 }
 
 .decimal-display.on {
-    color: #FFD000;
-    border-color: var(--secondary-color);
+    color: var(--active-decimal-text-color);
+    background-color: var(--active-decimal-background-color);
+    border: 2px solid var(--primary-color);
 }
+
 
 .bit {
     /* border: 1px solid red; */
@@ -102,11 +126,11 @@ body {
     display: block;
     background-repeat: no-repeat;
     background-position: center;
-    background-image: url(img/bulb_off.png);
+    background-image: var(--bulb-off);
 }
 
 .bit.on {
-    background-image: url(img/bulb_on.png);
+    background-image: var(--bulb-on);
 }
 
 .settings {
@@ -160,4 +184,14 @@ body {
 #value-buttons-container {
     display: flex;
     gap: 20px;
+}
+
+#colormode-btn {
+    height: 40px;
+    width: 40px;
+    border: none;
+    background-image: var(--mode-icon);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
 }
