@@ -1,21 +1,21 @@
-// Elements with same class
+// Bits
 const bitContainerDivs = document.querySelectorAll(".bit-container");
 const bitDivs = document.querySelectorAll(".bit");
 const bitValueDiv = document.querySelectorAll(".bit-value");
 
-// Unique elements
+// Bit EventListeners
+bitDivs.forEach(bit => { bit.addEventListener('click', toggleBitOnOff) });
+bitValueDiv.forEach(display => { display.addEventListener('click', toggleDecimalValueShowHide) });
+
+// Buttons
 const addBitBtn = document.getElementById("add-bit-btn");
-const bitCounterDiv = document.getElementById("bit-counter-display");
 const bitTypeBtn = document.getElementById("bittype-btn");
 const colormodeBtn = document.getElementById("colormode-btn");
 const hideValuesBtn = document.getElementById("hide-values-btn");
 const removeBitBtn = document.getElementById("remove-bit-btn");
 const resetBtn = document.getElementById("reset-btn");
 const showValuesBtn = document.getElementById("show-values-btn");
-const totalContainerDiv = document.getElementById("total-container");
-const totalValueDiv = document.getElementById("total-value");
 const totalBtn = document.getElementById("total-btn");
-const totalCalculationDiv = document.getElementById("total-calculation");
 
 // Button EventListeners
 addBitBtn.addEventListener('click', addBitContainer);
@@ -30,9 +30,13 @@ totalBtn.addEventListener('click', () => {
     toggleElementShowHide(totalContainerDiv);
 });
 
-// Bit EventListeners
-bitDivs.forEach(bit => { bit.addEventListener('click', toggleBitOnOff) });
-bitValueDiv.forEach(display => { display.addEventListener('click', toggleDecimalValueShowHide) });
+// Unique Divs
+const bitCounterDiv = document.getElementById("bit-counter-display");
+const totalContainerDiv = document.getElementById("total-container");
+const totalCalculationDiv = document.getElementById("total-calculation");
+const totalValueDiv = document.getElementById("total-value");
+
+
 
 // Functions for decimal displays and values
 function showDecimalValue(decimalDisplay) {
