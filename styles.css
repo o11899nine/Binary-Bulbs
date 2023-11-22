@@ -11,9 +11,14 @@ html {
     --button-active-color: rgb(25,25,25);
     --active-decimal-background-color:rgb(255, 208, 0);
     --active-decimal-text-color: rgb(0, 0, 0);
+    --total-DecValue-color: var(--active-decimal-background-color);
     --bulb-on: url(img/darkmode_bulb_on.png);
     --bulb-off: url(img/darkmode_bulb_off.png);
     --mode-icon: url(img/darkmode_colormode_icon.png);
+}
+
+.hide {
+    visibility: hidden;
 }
 
 html.lightmode {
@@ -23,6 +28,7 @@ html.lightmode {
     --tertiary-color: rgb(155, 155, 155);
     --button-hover-color: rgb(240, 240, 240);
     --button-active-color: rgb(230, 230, 230);
+    --total-DecValue-color: var(--primary-color);
     --bulb-on: url(img/lightmode_bulb_on.png);
     --bulb-off: url(img/lightmode_bulb_off.png);
     --mode-icon: url(img/lightmode_colormode_icon.png);
@@ -65,10 +71,7 @@ h1 {
     scale: 0.95;
 }
 
-#total-decValue-display {
-    color: var(--active-decimal-background-color);
-    font-size: 4rem;
-}
+
 
 body {
     font-family: 'Roboto', sans-serif;
@@ -212,8 +215,29 @@ body {
     scale: 0.95;
 }
 
-#total-decValue-display {
+
+#sum-display {
+    visibility: visible;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+#sum-display.hide {
     visibility: hidden;
+}
+
+#total-calculation {
+    height: 30px;
+    font-size: 2rem;
+    color: var(--primary-color);
+}
+#total-decValue-display {
+    color: var(--total-DecValue-color);
+    font-size: 4rem;
+    height: 50px;
 }
 
 #settings-buttons-container {

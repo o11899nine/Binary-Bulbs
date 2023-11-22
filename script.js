@@ -12,8 +12,10 @@ const hideValuesBtn = document.getElementById("hide-values-btn");
 const removeBitBtn = document.getElementById("remove-bit-btn");
 const resetBtn = document.getElementById("reset-btn");
 const showValuesBtn = document.getElementById("show-values-btn");
+const sumDisplay = document.getElementById("sum-display");
 const totalDecValueDisplay = document.getElementById("total-decValue-display");
 const totalValueBtn = document.getElementById("totalValue-btn");
+const totalCalculation = document.getElementById("total-calculation");
 
 // Button EventListeners
 addBitBtn.addEventListener('click', addBitContainer);
@@ -24,9 +26,8 @@ removeBitBtn.addEventListener('click', removeBitContainer);
 resetBtn.addEventListener('click', resetBits);
 showValuesBtn.addEventListener('click', showAllDecimalValues);
 totalValueBtn.addEventListener('click', () => {
-    // showElement(totalDecValueDisplay);
-    toggleElementShowHide(totalDecValueDisplay);
     displayTotalDecValue();
+    toggleElementShowHide(sumDisplay);
 });
 
 // Bit EventListeners
@@ -125,6 +126,7 @@ function resetBits() {
 // Total decimal counter
 function displayTotalDecValue() {
     let totalDecValue = 0;
+    let bitValues = [];
  
     bits.forEach(bit => {
        
@@ -132,10 +134,16 @@ function displayTotalDecValue() {
             let decimalDisplay = bit.parentElement.children[0];
             let decValue = decimalDisplay.getAttribute("data-decimalValue");
             totalDecValue += parseInt(decValue);
+            bitValues.unshift(decValue);
         }
     });
 
     totalDecValueDisplay.innerText = totalDecValue;
+    if (bitValues.length > 0) {
+        totalCalculation.innerText = bitValues.join(' + ');
+    } else {
+        totalCalculation.innerText = " ";
+    }
 }
 
 // Bit counter
@@ -171,19 +179,16 @@ function toggleBitOnOff(event) {
 
 // Functions for all elements
 function hideElement(element) {
-    element.style.visibility = "hidden";
+    element.classList.add("hide");
 }
 
 function showElement(element) {
-    element.style.visibility = "visible";
+    element.classList.remove("hide");
 }
 
 function toggleElementShowHide(element) {
-    if (element.style.visibility === "hidden") {
-        element.style.visibility = "visible";
-    } else {
-        element.style.visibility = "hidden";
-    }
+    element.classList.toggle("hide");
+    console.log(element.classList);
 }
 
 // Colormode
