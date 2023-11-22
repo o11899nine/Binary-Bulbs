@@ -14,7 +14,7 @@ const resetBtn = document.getElementById("reset-btn");
 const showValuesBtn = document.getElementById("show-values-btn");
 const totalContainerDiv = document.getElementById("total-container");
 const totalValueDiv = document.getElementById("total-value");
-const totalValueBtn = document.getElementById("totalValue-btn");
+const totalBtn = document.getElementById("total-btn");
 const totalCalculationDiv = document.getElementById("total-calculation");
 
 // Button EventListeners
@@ -25,7 +25,7 @@ hideValuesBtn.addEventListener('click', hideAllDecimalValues);
 removeBitBtn.addEventListener('click', removeBitContainer);
 resetBtn.addEventListener('click', resetBits);
 showValuesBtn.addEventListener('click', showAllDecimalValues);
-totalValueBtn.addEventListener('click', () => {
+totalBtn.addEventListener('click', () => {
     displayTotalDecValue();
     toggleElementShowHide(totalContainerDiv);
 });

@@ -42,12 +42,6 @@ h1 {
     font-size: 7vh;
 }
 
-.prevent-select {
-    -webkit-user-select: none;
-    -ms-user-select: none;
-    user-select: none;
-}
-
 .button {
     width: 150px;
     text-align: center;
@@ -89,7 +83,7 @@ a {
     text-decoration: none;
 }
 
-#header {
+.header {
     height: 25vh;
     display: flex;
     align-items: center;
@@ -124,6 +118,9 @@ a {
     border: 2px solid var(--tertiary-color);
     font-size: 4rem;
     border-radius: 100px;
+    -webkit-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
 }
 
 .bit-value.on {
