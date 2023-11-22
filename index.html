@@ -61,19 +61,24 @@
                 <div class="bit bulb"></div>
             </div>
         </div>
-        <button id="colormode-btn"></button>
+
+        <div id="total-decValue-display">0</div>
+        
         <div class="settings">
-            <div id="bit-counter">
-                <button id="remove-bit-btn" class="counter-btn">-</button>
-                <div id="bit-counter-display" class="prevent-select"
-                    data-bitCount="8">8</div>
-                <button id="add-bit-btn" class="counter-btn">+</button>
-            </div>
-            <div id="value-buttons-container">
-                <button id="show-values-btn" class="button">Show values</button>
+            
+            <div id="settings-buttons-container">
+                <button id="totalValue-btn" class="button">Toggle total</button>
                 <button id="hide-values-btn" class="button">Hide values</button>
-                <button id="bittype-btn" class="button">Binary / Bulbs</button>
+                <button id="show-values-btn" class="button">Show values</button>
+                <div id="bit-counter">
+                    <button id="remove-bit-btn" class="counter-btn">-</button>
+                    <div id="bit-counter-display" class="prevent-select"
+                    data-bitCount="8">bit<br>count</div>
+                    <button id="add-bit-btn" class="counter-btn">+</button>
+                </div>
+                <button id="bittype-btn" class="button">Binary</button>
                 <button id="reset-btn" class="button">Reset</button>
+                <button id="colormode-btn" class="button">Light mode</button>
             </div>
             
         </div>

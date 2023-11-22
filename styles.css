@@ -59,13 +59,16 @@ h1 {
     cursor: pointer;
 }
 
-.button:active,
-.decimal-display:active {
+.button:active {
     background-color: var(--button-active-color);
     cursor: pointer;
     scale: 0.95;
 }
 
+#total-decValue-display {
+    color: var(--active-decimal-background-color);
+    font-size: 4rem;
+}
 
 body {
     font-family: 'Roboto', sans-serif;
@@ -168,13 +171,6 @@ body {
     gap: 2vw;
 }
 
-#colormode-btn {
-    background: none;
-}
-
-#colormode-btn:hover {
-    cursor: pointer;
-}
 
 #bit-counter {
     display: flex;
@@ -186,8 +182,8 @@ body {
     background-color: transparent;
     color: var(--primary-color);
     text-align: center;
-    width: 50px;
-    font-size: 4rem;
+    margin: 0px 20px;
+    font-size: 2rem;
     border: none;
 }
 
@@ -216,18 +212,11 @@ body {
     scale: 0.95;
 }
 
-
-#value-buttons-container {
-    display: flex;
-    gap: 20px;
+#total-decValue-display {
+    visibility: hidden;
 }
 
-#colormode-btn {
-    height: 40px;
-    width: 40px;
-    border: none;
-    background-image: var(--mode-icon);
-    background-repeat: no-repeat;
-    background-position: center;
-    background-size: cover;
+#settings-buttons-container {
+    display: flex;
+    gap: 20px;
 }
