@@ -11,9 +11,14 @@ html {
     --button-active-color: rgb(25,25,25);
     --active-decimal-background-color:rgb(255, 208, 0);
     --active-decimal-text-color: rgb(0, 0, 0);
+    --total-DecValue-color: var(--active-decimal-background-color);
     --bulb-on: url(img/darkmode_bulb_on.png);
     --bulb-off: url(img/darkmode_bulb_off.png);
     --mode-icon: url(img/darkmode_colormode_icon.png);
+}
+
+.hide {
+    visibility: hidden;
 }
 
 html.lightmode {
@@ -23,6 +28,7 @@ html.lightmode {
     --tertiary-color: rgb(155, 155, 155);
     --button-hover-color: rgb(240, 240, 240);
     --button-active-color: rgb(230, 230, 230);
+    --total-DecValue-color: var(--primary-color);
     --bulb-on: url(img/lightmode_bulb_on.png);
     --bulb-off: url(img/lightmode_bulb_off.png);
     --mode-icon: url(img/lightmode_colormode_icon.png);
@@ -59,12 +65,12 @@ h1 {
     cursor: pointer;
 }
 
-.button:active,
-.decimal-display:active {
+.button:active {
     background-color: var(--button-active-color);
     cursor: pointer;
     scale: 0.95;
 }
+
 
 
 body {
@@ -168,13 +174,6 @@ body {
     gap: 2vw;
 }
 
-#colormode-btn {
-    background: none;
-}
-
-#colormode-btn:hover {
-    cursor: pointer;
-}
 
 #bit-counter {
     display: flex;
@@ -186,8 +185,8 @@ body {
     background-color: transparent;
     color: var(--primary-color);
     text-align: center;
-    width: 50px;
-    font-size: 4rem;
+    margin: 0px 20px;
+    font-size: 2rem;
     border: none;
 }
 
@@ -217,17 +216,31 @@ body {
 }
 
 
-#value-buttons-container {
+#sum-display {
+    visibility: visible;
+    text-align: center;
     display: flex;
-    gap: 20px;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
 }
 
-#colormode-btn {
-    height: 40px;
-    width: 40px;
-    border: none;
-    background-image: var(--mode-icon);
-    background-repeat: no-repeat;
-    background-position: center;
-    background-size: cover;
+#sum-display.hide {
+    visibility: hidden;
+}
+
+#total-calculation {
+    height: 30px;
+    font-size: 2rem;
+    color: var(--primary-color);
+}
+#total-decValue-display {
+    color: var(--total-DecValue-color);
+    font-size: 4rem;
+    height: 50px;
+}
+
+#settings-buttons-container {
+    display: flex;
+    gap: 20px;
 }

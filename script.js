@@ -12,15 +12,23 @@ const hideValuesBtn = document.getElementById("hide-values-btn");
 const removeBitBtn = document.getElementById("remove-bit-btn");
 const resetBtn = document.getElementById("reset-btn");
 const showValuesBtn = document.getElementById("show-values-btn");
+const sumDisplay = document.getElementById("sum-display");
+const totalDecValueDisplay = document.getElementById("total-decValue-display");
+const totalValueBtn = document.getElementById("totalValue-btn");
+const totalCalculation = document.getElementById("total-calculation");
 
 // Button EventListeners
 addBitBtn.addEventListener('click', addBitContainer);
-bitTypeBtn.addEventListener('click', toggleBitType)
+bitTypeBtn.addEventListener('click', toggleBitType);
 colormodeBtn.addEventListener('click', toggleColorMode);
-hideValuesBtn.addEventListener('click', hideAllDecimalValues)
+hideValuesBtn.addEventListener('click', hideAllDecimalValues);
 removeBitBtn.addEventListener('click', removeBitContainer);
-resetBtn.addEventListener('click', resetBits)
-showValuesBtn.addEventListener('click', showAllDecimalValues)
+resetBtn.addEventListener('click', resetBits);
+showValuesBtn.addEventListener('click', showAllDecimalValues);
+totalValueBtn.addEventListener('click', () => {
+    displayTotalDecValue();
+    toggleElementShowHide(sumDisplay);
+});
 
 // Bit EventListeners
 bits.forEach(bit => { bit.addEventListener('click', toggleBitOnOff) });
@@ -97,9 +105,11 @@ function toggleBitType() {
         if (bit.classList.contains("bulb")) {
             bit.classList.remove("bulb");
             bit.classList.add("digit");
+            bitTypeBtn.innerText = "Bulbs";
         } else {
             bit.classList.remove("digit");
             bit.classList.add("bulb");
+            bitTypeBtn.innerText = "Binary";
 
         }
 
@@ -112,10 +122,33 @@ function resetBits() {
     });
 }
 
+
+// Total decimal counter
+function displayTotalDecValue() {
+    let totalDecValue = 0;
+    let bitValues = [];
+ 
+    bits.forEach(bit => {
+       
+        if (bit.classList.contains("on")) {
+            let decimalDisplay = bit.parentElement.children[0];
+            let decValue = decimalDisplay.getAttribute("data-decimalValue");
+            totalDecValue += parseInt(decValue);
+            bitValues.unshift(decValue);
+        }
+    });
+
+    totalDecValueDisplay.innerText = totalDecValue;
+    if (bitValues.length > 0) {
+        totalCalculation.innerText = bitValues.join(' + ');
+    } else {
+        totalCalculation.innerText = " ";
+    }
+}
+
 // Bit counter
 function updateBitCounter(bitCount) {
     bitCounter.setAttribute("data-bitCount", bitCount);
-    bitCounter.innerText = bitCount;
 }
 
 // Functions for bits
@@ -123,12 +156,14 @@ function turnBitOff(bit) {
     let decimalDisplay = bit.parentElement.children[0];
     bit.classList.remove("on");
     decimalDisplay.classList.remove("on");
+    displayTotalDecValue();
 }
 
 function turnBitOn(bit) {
     let decimalDisplay = bit.parentElement.children[0];
     bit.classList.add("on");
     decimalDisplay.classList.add("on");
+    displayTotalDecValue();
 }
 
 function toggleBitOnOff(event) {
@@ -144,22 +179,26 @@ function toggleBitOnOff(event) {
 
 // Functions for all elements
 function hideElement(element) {
-    element.style.visibility = "hidden";
+    element.classList.add("hide");
 }
 
 function showElement(element) {
-    element.style.visibility = "visible";
+    element.classList.remove("hide");
 }
 
 function toggleElementShowHide(element) {
-    if (element.style.visibility === "hidden") {
-        element.style.visibility = "visible";
-    } else {
-        element.style.visibility = "hidden";
-    }
+    element.classList.toggle("hide");
+    console.log(element.classList);
 }
 
 // Colormode
 function toggleColorMode() {
-    document.documentElement.classList.toggle("lightmode");
+    let htmlTag = document.documentElement;
+    htmlTag.classList.toggle("lightmode");
+    if (htmlTag.classList.contains("lightmode")) {
+        colormodeBtn.innerText = "Dark mode";
+    } else {
+        colormodeBtn.innerText = "Light mode";
+    }
+    
 }
