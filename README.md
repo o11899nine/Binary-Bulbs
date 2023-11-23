@@ -5,6 +5,5 @@ A simple webpage to teach binary using light bulbs.
 
 ## TODO:
 - Responsive design
-- Total decimal value calculator
-- Decimal value to bits converter
-- game mode
+- Settings menu
+- Comments, docstrings

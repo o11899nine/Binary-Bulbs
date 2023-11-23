@@ -4,78 +4,81 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Binary Bulbs</title>
+        <!-- Reset.CSS -->
         <link rel="stylesheet" href="reset.css">
+        <!-- Google Fonts -->
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link
-            href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap"
-            rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
+        <!-- Custom CSS -->
         <link rel="stylesheet" href="styles.css">
 
     </head>
     <body>
 
+        <!-- Header -->
         <div class="header">
             <div class="header-btn"></div>
             <div class="header-title"><h1>Binary Bulbs</h1></div>
             <div class="header-btn"></div>
         </div>
 
-        <div class="byte">
+        <!-- Byte with bits -->
+        <div class="byte-container">
             <div class="bit-container">
-                <div class="decimal-display prevent-select"
-                    data-decimalValue="1"></div>
-                <div class="bit bulb"></div>
+                <div class="bit-value" data-decimalValue="1"></div>
+                <div class="bit digit"></div>
             </div>
             <div class="bit-container">
-                <div class="decimal-display prevent-select"
-                    data-decimalValue="2"></div>
-                <div class="bit bulb"></div>
+                <div class="bit-value" data-decimalValue="2"></div>
+                <div class="bit digit"></div>
             </div>
             <div class="bit-container">
-                <div class="decimal-display prevent-select"
-                    data-decimalValue="4"></div>
-                <div class="bit bulb"></div>
+                <div class="bit-value" data-decimalValue="4"></div>
+                <div class="bit digit"></div>
             </div>
             <div class="bit-container">
-                <div class="decimal-display prevent-select"
-                    data-decimalValue="8"></div>
-                <div class="bit bulb"></div>
+                <div class="bit-value" data-decimalValue="8"></div>
+                <div class="bit digit"></div>
             </div>
             <div class="bit-container">
-                <div class="decimal-display prevent-select"
-                    data-decimalValue="16"></div>
-                <div class="bit bulb"></div>
+                <div class="bit-value" data-decimalValue="16"></div>
+                <div class="bit digit"></div>
             </div>
             <div class="bit-container">
-                <div class="decimal-display prevent-select"
-                    data-decimalValue="32"></div>
-                <div class="bit bulb"></div>
+                <div class="bit-value" data-decimalValue="32"></div>
+                <div class="bit digit"></div>
             </div>
             <div class="bit-container">
-                <div class="decimal-display prevent-select"
-                    data-decimalValue="64"></div>
-                <div class="bit bulb"></div>
+                <div class="bit-value" data-decimalValue="64"></div>
+                <div class="bit digit"></div>
             </div>
             <div class="bit-container">
-                <div class="decimal-display prevent-select"
-                    data-decimalValue="128"></div>
-                <div class="bit bulb"></div>
+                <div class="bit-value" data-decimalValue="128"></div>
+                <div class="bit digit"></div>
             </div>
         </div>
-        <button id="colormode-btn"></button>
-        <div class="settings">
-            <div id="bit-counter">
-                <button id="remove-bit-btn" class="counter-btn">-</button>
-                <div id="bit-counter-display" class="prevent-select"
-                    data-bitCount="8">8</div>
-                <button id="add-bit-btn" class="counter-btn">+</button>
-            </div>
-            <div id="value-buttons-container">
+
+        <!-- Total value -->
+        <div id="total-container" class="hide">
+            <div id="total-calculation"></div>
+            <div id="total-value"></div>
+        </div>
+
+        <!-- Settings -->
+        <div class="settings-container">
+                <button id="total-btn" class="button">Toggle total</button>
                 <button id="show-values-btn" class="button">Show values</button>
                 <button id="hide-values-btn" class="button">Hide values</button>
-                <button id="bittype-btn" class="button">Binary / Bulbs</button>
+                <button id="bittype-btn" class="button">Bulbs</button>
                 <button id="reset-btn" class="button">Reset</button>
+                <button class="button"><a href="https://www.johndcook.com/ascii.png" target="_blank">ASCII Table</a></button>
+                <button id="colormode-btn" class="button">Light mode</button>
+                <div id="bit-counter">
+                    <button id="remove-bit-btn" class="counter-btn">-</button>
+                    <div id="bit-counter-display" data-bitCount="8">bit<br>count</div>
+                    <button id="add-bit-btn" class="counter-btn">+</button>
+                </div>
             </div>
             
         </div>
