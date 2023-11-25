@@ -88,7 +88,7 @@ a {
     margin: 40px 0px 120px 0px;
     display: flex;
     align-items: center;
-    justify-content: space-between;
+    justify-content: center;
 }
 
 
@@ -178,13 +178,13 @@ a {
 }
 
 
-#bit-counter {
+#bit-count-container {
     display: flex;
     align-items: center;
     justify-content: center;
 }
 
-#bit-counter-display {
+#bit-count {
     background-color: transparent;
     color: var(--primary-color);
     text-align: center;
@@ -193,7 +193,7 @@ a {
     border: none;
 }
 
-.counter-btn {
+.bit-count-btn {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -208,14 +208,14 @@ a {
     border: 2px solid transparent;
 }
 
-.counter-btn:hover {
+.bit-count-btn:hover {
     cursor: pointer;
     background-color: transparent;
     color: var(--primary-color);
     border: 2px solid var(--primary-color);
 }
 
-.counter-btn:active {
+.bit-count-btn:active {
     scale: 0.95;
 }
 

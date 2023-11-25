@@ -31,7 +31,7 @@ totalBtn.addEventListener('click', () => {
 });
 
 // Unique Divs
-const bitCounterDiv = document.getElementById("bit-counter-display");
+const bitCounterDiv = document.getElementById("bit-count");
 const totalContainerDiv = document.getElementById("total-container");
 const totalCalculationDiv = document.getElementById("total-calculation");
 const totalValueDiv = document.getElementById("total-value");

@@ -12,15 +12,12 @@
         <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
         <!-- Custom CSS -->
         <link rel="stylesheet" href="styles.css">
-
     </head>
-    <body>
 
+    <body>
         <!-- Header -->
         <div class="header">
-            <div class="header-btn"></div>
             <div class="header-title"><h1>Binary Bulbs</h1></div>
-            <div class="header-btn"></div>
         </div>
 
         <!-- Byte with bits -->
@@ -72,12 +69,12 @@
                 <button id="hide-values-btn" class="button">Hide values</button>
                 <button id="bittype-btn" class="button">Bulbs</button>
                 <button id="reset-btn" class="button">Reset</button>
-                <button class="button"><a href="https://www.johndcook.com/ascii.png" target="_blank">ASCII Table</a></button>
+                <button id="ascii-btn" class="button"><a href="https://www.johndcook.com/ascii.png" target="_blank">ASCII Table</a></button>
                 <button id="colormode-btn" class="button">Light mode</button>
-                <div id="bit-counter">
-                    <button id="remove-bit-btn" class="counter-btn">-</button>
-                    <div id="bit-counter-display" data-bitCount="8">bit<br>count</div>
-                    <button id="add-bit-btn" class="counter-btn">+</button>
+                <div id="bit-count-container">
+                    <button id="remove-bit-btn" class="bit-count-btn">-</button>
+                    <div id="bit-count" data-bitCount="8">bit<br>count</div>
+                    <button id="add-bit-btn" class="bit-count-btn">+</button>
                 </div>
             </div>
             
