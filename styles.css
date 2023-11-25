@@ -20,6 +20,8 @@ html {
 
     --bulb-on-img: url(img/darkmode_bulb_on.png);
     --bulb-off-img: url(img/darkmode_bulb_off.png);
+
+    --colormode-icon: url(img/darkmode_colormode_icon.png);
 }
 
 html.lightmode {
@@ -27,18 +29,23 @@ html.lightmode {
     --primary-color: rgb(0, 0, 0);
     --secondary-color: rgb(55, 55, 55);
     --tertiary-color: rgb(155, 155, 155);
-
+    
     --button-hover-bg-color: rgb(240, 240, 240);
     --button-active-bg-color: rgb(230, 230, 230);
-
+    
     --total-value-text-color: var(--primary-color);
-
+    
     --bulb-on-img: url(img/lightmode_bulb_on.png);
     --bulb-off-img: url(img/lightmode_bulb_off.png);
+
+    --colormode-icon: url(img/lightmode_colormode_icon.png);
 }
 
 
 /* General */
+* {
+    box-sizing: border-box;
+}
 
 .hide {
     visibility: hidden;
@@ -58,11 +65,8 @@ button,
     cursor: pointer;
 }
 
-* {
-    box-sizing: border-box;
-}
 
-/* Tag names */
+/* Tags */
 
 h1 {
     font-size: 7vh;
@@ -72,7 +76,6 @@ a {
     text-decoration: none;
     color: inherit;
 }
-
 
 body {
     flex-direction: column;
@@ -180,6 +183,7 @@ body {
 .big-btn {
     border: 1px solid var(--primary-color);
     border-radius: 10px;
+    height: 50px;
     width: 150px;
     padding: 10px;
     background-color: transparent;
@@ -197,6 +201,11 @@ body {
     background-color: var(--button-active-bg-color);
 }
 
+#colormode-btn img {
+    max-height: 100%;
+    content: var(--colormode-icon);
+
+}
 
 /* Bit count */
 #bit-count {
