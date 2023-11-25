@@ -62,30 +62,15 @@ button,
     box-sizing: border-box;
 }
 
+/* Tag names */
+
 h1 {
     font-size: 7vh;
 }
 
-.big-btn {
-    border: 1px solid var(--primary-color);
-    border-radius: 10px;
-    width: 150px;
-    padding: 10px;
-    background-color: transparent;
-    font-size: 2rem;
-    text-align: center;
-    color: var(--primary-color);
-}
-
-.big-btn:hover,
-.bit-value:hover {
-    background-color: var(--button-hover-bg-color);
-}
-
-
-.big-btn:active {
-    scale: 0.95;
-    background-color: var(--button-active-bg-color);
+a {
+    text-decoration: none;
+    color: inherit;
 }
 
 
@@ -98,18 +83,14 @@ body {
     color: var(--primary-color);
 }
 
-a {
-    text-decoration: none;
-    color: inherit;
-}
-
+/* Header */
 .header {
     margin: 40px 0px 120px 0px;
     width: 100%;
 }
 
-
-.byte-container {
+/* Byte with bits */
+#byte-container {
     display: flex;
     flex-direction: row-reverse;
     justify-content: space-between;
@@ -133,6 +114,9 @@ a {
     color: var(--secondary-color);
 }
 
+.bit-value:hover {
+    background-color: var(--button-hover-bg-color);
+}
 
 .bit-value.on {
     border: 2px solid var(--primary-color);
@@ -140,10 +124,21 @@ a {
     color: var(--bit-value-text-color);
 }
 
-
 .bit {
     width: 100%;
     height: 100%;
+}
+
+.bit.digit {
+    font-size: 15rem;
+}
+
+.bit.digit.on:before {
+    content: "1";
+}
+
+.bit.digit:before {
+    content: "0";
 }
 
 .bit.bulb {
@@ -158,24 +153,52 @@ a {
     background-image: var(--bulb-on-img);
 }
 
-.bit.digit {
-    font-size: 15rem;
-}
-.bit.digit.on:before {
-    content: "1";
-}
-
-.bit.digit:before {
-    content: "0";
+/* Total value */
+#total-container {
+    flex-direction: column;
+    row-gap: 10px;
 }
 
+#total-calculation {
+    height: 3rem;
+    font-size: 3rem;
+    color: var(--primary-color);
+}
+
+#total-value {
+    height: 5rem;
+    font-size: 5rem;
+    color: var(--total-value-text-color);
+}
+
+/* Settings */
 .settings-container {
     padding-top: 40px;
     gap: 2vw;
 }
 
+.big-btn {
+    border: 1px solid var(--primary-color);
+    border-radius: 10px;
+    width: 150px;
+    padding: 10px;
+    background-color: transparent;
+    font-size: 2rem;
+    text-align: center;
+    color: var(--primary-color);
+}
+
+.big-btn:hover {
+    background-color: var(--button-hover-bg-color);
+}
+
+.big-btn:active {
+    scale: 0.95;
+    background-color: var(--button-active-bg-color);
+}
 
 
+/* Bit count */
 #bit-count {
     margin: 0px 20px;
     background-color: transparent;
@@ -204,22 +227,3 @@ a {
 .bit-count-btn:active {
     scale: 0.95;
 }
-
-
-#total-container {
-    flex-direction: column;
-    row-gap: 10px;
-}
-
-#total-calculation {
-    height: 3rem;
-    font-size: 3rem;
-    color: var(--primary-color);
-}
-#total-value {
-    height: 5rem;
-    font-size: 5rem;
-    color: var(--total-value-text-color);
-}
-
-
