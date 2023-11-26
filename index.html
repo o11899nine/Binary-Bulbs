@@ -64,22 +64,48 @@
 
         <!-- Settings -->
         <div class="settings-container d-flex-all-center">
-                <button id="total-btn" class="big-btn">Toggle total</button>
-                <button id="show-values-btn" class="big-btn">Show values</button>
-                <button id="hide-values-btn" class="big-btn">Hide values</button>
-                <button id="bittype-btn" class="big-btn">Bulbs</button>
-                <button id="reset-btn" class="big-btn">Reset</button>
+                
+                <button id="settings-btn" onclick="openSideMenu()" class="big-btn">settings</button>
                 <button id="ascii-btn" class="big-btn"><a href="https://www.johndcook.com/ascii.png" target="_blank">ASCII Table</a></button>
+                <button id="reset-btn" class="big-btn">Reset</button>
                 <button id="colormode-btn" class="big-btn"><img></button>
-                <!-- Bit count -->
+
+   
+            </div>
+            
+        </div>
+
+        <div id="side-menu">
+            <a href="#" class="closebtn" onclick="closeSideMenu()">&times;</a>
+            <div class="sidemenu-item">  
+                <label for="total-btn">Show total</label>             
+                <label class="switch">
+                    <input type="checkbox" id="total-btn">
+                    <span class="slider round"></span>
+                </label>
+            </div>
+            <div class="sidemenu-item">  
+                <label for="values-btn">Show values</label>             
+                <label class="switch">
+                    <input type="checkbox" id="values-btn">
+                    <span class="slider round"></span>
+                </label>
+            </div>
+            <div class="sidemenu-item">  
+                <label for="bittype-btn">Show bulbs</label>             
+                <label class="switch">
+                    <input type="checkbox" id="bittype-btn">
+                    <span class="slider round"></span>
+                </label>
+            </div>
+                
                 <div id="bit-count-container" class="d-flex-all-center">
                     <button id="remove-bit-btn" class="bit-count-btn d-flex-all-center">-</button>
                     <div id="bit-count" data-bitCount="8">bit<br>count</div>
                     <button id="add-bit-btn" class="bit-count-btn d-flex-all-center">+</button>
                 </div>
-            </div>
-            
         </div>
+
         <!-- Custom JS -->
         <script src="script.js"></script>
     </body>
