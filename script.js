@@ -1,13 +1,19 @@
-// Bits
+// Divs by Class
 const bitContainerDivs = document.querySelectorAll(".bit-container");
 const bitDivs = document.querySelectorAll(".bit");
 const bitValueDiv = document.querySelectorAll(".bit-value");
 
-// Bit EventListeners
-bitDivs.forEach(bit => { bit.addEventListener('click', toggleBitOnOff) });
-bitValueDiv.forEach(display => { display.addEventListener('click', toggleDecimalValueShowHide) });
+    // Bit EventListeners
+    bitDivs.forEach(bit => { bit.addEventListener('click', toggleBitOnOff) });
+    bitValueDiv.forEach(display => { display.addEventListener('click', toggleDecimalValueShowHide) });
 
-// Buttons
+// Divs by ID
+const bitCounterDiv = document.getElementById("bit-count");
+const totalContainerDiv = document.getElementById("total-container");
+const totalCalculationDiv = document.getElementById("total-calculation");
+const totalValueDiv = document.getElementById("total-value");
+
+// Buttons by ID
 const addBitBtn = document.getElementById("add-bit-btn");
 const bitTypeBtn = document.getElementById("bittype-btn");
 const colormodeBtn = document.getElementById("colormode-btn");
@@ -17,30 +23,25 @@ const resetBtn = document.getElementById("reset-btn");
 const showValuesBtn = document.getElementById("show-values-btn");
 const totalBtn = document.getElementById("total-btn");
 
-// Button EventListeners
-addBitBtn.addEventListener('click', addBitContainer);
-bitTypeBtn.addEventListener('click', toggleBitType);
-colormodeBtn.addEventListener('click', toggleColorMode);
-hideValuesBtn.addEventListener('click', hideAllDecimalValues);
-removeBitBtn.addEventListener('click', removeBitContainer);
-resetBtn.addEventListener('click', resetBits);
-showValuesBtn.addEventListener('click', showAllBitValues);
-totalBtn.addEventListener('click', () => {
-    displayTotalValue();
-    toggleElementShowHide(totalContainerDiv);
-});
+    // Button EventListeners
+    addBitBtn.addEventListener('click', addBitContainer);
+    bitTypeBtn.addEventListener('click', toggleBitType);
+    colormodeBtn.addEventListener('click', toggleColorMode);
+    hideValuesBtn.addEventListener('click', hideAllDecimalValues);
+    removeBitBtn.addEventListener('click', removeBitContainer);
+    resetBtn.addEventListener('click', resetBits);
+    showValuesBtn.addEventListener('click', showAllBitValues);
+    totalBtn.addEventListener('click', () => {
+        displayTotalValue();
+        toggleElementShowHide(totalContainerDiv);
+    });
 
-// Unique Divs
-const bitCounterDiv = document.getElementById("bit-count");
-const totalContainerDiv = document.getElementById("total-container");
-const totalCalculationDiv = document.getElementById("total-calculation");
-const totalValueDiv = document.getElementById("total-value");
 
 
 
 // Functions for bit values
 function showBitValue(bitValueDiv) {
-    bitValueDiv.innerText = bitValueDiv.getAttribute("data-decimalValue");
+    bitValueDiv.innerText = bitValueDiv.getAttribute("data-bitValue");
 }
 
 function hideBitValue(bitValueDiv) {
@@ -48,23 +49,19 @@ function hideBitValue(bitValueDiv) {
 }
 
 function showAllBitValues() {
-    bitValueDiv.forEach(bitValueDiv => {
-        showBitValue(bitValueDiv);
-    });
+    bitValueDiv.forEach(bitValueDiv => {showBitValue(bitValueDiv)});
 }
 function hideAllDecimalValues() {
-    bitValueDiv.forEach(bitValueDiv => {
-        hideBitValue(bitValueDiv);
-    });
+    bitValueDiv.forEach(bitValueDiv => {hideBitValue(bitValueDiv)});
 }
 
 function toggleDecimalValueShowHide(event) {
     let bitValueDiv = event.target;
       
     if (bitValueDiv.innerText === "") {
-        showBitValue(event.target);
+        showBitValue(bitValueDiv);
     } else {
-        hideBitValue(event.target);
+        hideBitValue(bitValueDiv);
     }
 }
 
@@ -127,20 +124,25 @@ function resetBits() {
 
 // Total decimal counter
 function displayTotalValue() {
-    let totalValue = 0;
+    let byteValue = 0;
     let bitValues = [];
  
     bitDivs.forEach(bit => {
-       
         if (bit.classList.contains("on")) {
             let bitValueDiv = bit.parentElement.children[0];
-            let decValue = bitValueDiv.getAttribute("data-decimalValue");
-            totalValue += parseInt(decValue);
-            bitValues.unshift(decValue);
+            let bitValue = bitValueDiv.getAttribute("data-bitValue");
+            byteValue += parseInt(bitValue);
+            // Unshift array to make sure highest value is always on the left
+            bitValues.unshift(bitValue);
         }
     });
 
-    totalValueDiv.innerText = totalValue;
+    totalValueDiv.innerText = byteValue;
+    displayTotalCalculation(bitValues);
+
+}
+
+function displayTotalCalculation(bitValues) {
     if (bitValues.length > 0) {
         totalCalculationDiv.innerText = bitValues.join(' + ');
     } else {
@@ -181,15 +183,15 @@ function toggleBitOnOff(event) {
 
 // Functions for all elements
 function showElement(element) {
-    element.classList.remove("hide");
+    element.classList.remove("hidden");
 }
 
 function hideElement(element) {
-    element.classList.add("hide");
+    element.classList.add("hidden");
 }
 
 function toggleElementShowHide(element) {
-    element.classList.toggle("hide");
+    element.classList.toggle("hidden");
 }
 
 // Colormode

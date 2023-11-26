@@ -47,7 +47,7 @@ html.lightmode {
     box-sizing: border-box;
 }
 
-.hide {
+.hidden {
     visibility: hidden;
 }
 
