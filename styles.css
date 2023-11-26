@@ -53,12 +53,7 @@ html.lightmode {
 }
 
 
-/* Positioning */
-.d-flex-all-center {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
+
 
 /* Cursor */
 button,
@@ -208,8 +203,11 @@ body {
 
 }
 
-/* New-settings */
+/* Side menu */
 #side-menu {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
     height: 100vh;
     width: 0;
     font-size: 2rem;
@@ -217,7 +215,8 @@ body {
     z-index: 1;
     top: 0;
     right: 0;
-    background-color: #111;
+    color: var(--background-color);
+    background-color: var(--primary-color);
     overflow-x: hidden;
     transition: 0.5s;
     padding-top: 60px;
@@ -231,6 +230,15 @@ body {
     font-size: 36px;
     margin-left: 50px;
 }
+
+.side-menu-item {
+    padding: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 100px;
+}
+
 
 /* Toggle switch */
 .switch {
@@ -299,7 +307,6 @@ input:checked+.slider:before {
     background-color: transparent;
     font-size: 2rem;
     text-align: center;
-    color: var(--primary-color);
 }
 
 .bit-count-btn {
@@ -307,20 +314,9 @@ input:checked+.slider:before {
     border-radius: 40px;
     width: 40px;
     height: 40px;
-    background-color: var(--primary-color);
     font-size: 3rem;
     font-weight: bold;
-    color: var(--background-color);
-}
-
-.bit-count-btn:hover {
-    border: 2px solid var(--primary-color);
-    background-color: transparent;
-    color: var(--primary-color);
-}
-
-.bit-count-btn:active {
-    scale: 0.95;
+    background-color: #ccc;
 }
 
 /* Testing */
@@ -335,4 +331,11 @@ input:checked+.slider:before {
 }
 .border-yellow {
     border: 2px solid yellow;
+}
+
+/* Positioning */
+.d-flex-all-center {
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
