@@ -225,18 +225,18 @@ body {
 
 #side-menu .closebtn {
     position: absolute;
-    top: 0;
-    right: 0px;
+    top: 20px;
+    right: 20px;
     font-size: 36px;
     margin-left: 50px;
 }
 
 .side-menu-item {
-    padding: 20px;
+    margin: 10px 20px;
     display: flex;
     align-items: center;
     justify-content: space-between;
-    height: 100px;
+    height: auto;
 }
 
 
