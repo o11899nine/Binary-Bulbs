@@ -176,6 +176,18 @@ body {
     gap: 2vw;
 }
 
+
+.icon-btn {
+    background: none;
+    border: none;
+    font-size: 4rem;
+    color: var(--primary-color);
+}
+
+.icon-btn:active {
+    scale: 0.95;
+}
+
 .big-btn {
     border: 1px solid var(--primary-color);
     border-radius: 10px;
@@ -218,7 +230,7 @@ body {
     color: var(--background-color);
     background-color: var(--primary-color);
     overflow-x: hidden;
-    transition: 0.5s;
+    transition: 0s;
     padding-top: 60px;
 }
 

@@ -25,7 +25,7 @@ const totalBtn = document.getElementById("total-btn");
     // Button EventListeners
     addBitBtn.addEventListener('click', addBitContainer);
     bitTypeBtn.addEventListener('change', toggleBitType);
-    colormodeBtn.addEventListener('click', toggleColorMode);
+    colormodeBtn.addEventListener('change', toggleColorMode);
     removeBitBtn.addEventListener('click', removeBitContainer);
     resetBtn.addEventListener('click', resetBits);
     totalBtn.addEventListener('change', function () {
