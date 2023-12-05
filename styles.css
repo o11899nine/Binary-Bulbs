@@ -172,8 +172,11 @@ body {
 
 /* Settings */
 .settings-container {
+    width: 100%;
     padding-top: 40px;
-    gap: 2vw;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
 }
 
 
@@ -186,6 +189,9 @@ body {
 
 .icon-btn:active {
     scale: 0.95;
+}
+.icon-btn:hover {
+    scale: 0.90;
 }
 
 .big-btn {
