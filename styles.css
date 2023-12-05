@@ -194,27 +194,6 @@ body {
     scale: 0.90;
 }
 
-.big-btn {
-    border: 1px solid var(--primary-color);
-    border-radius: 10px;
-    height: 50px;
-    width: 150px;
-    padding: 10px;
-    background-color: transparent;
-    font-size: 2rem;
-    text-align: center;
-    color: var(--primary-color);
-}
-
-.big-btn:hover {
-    background-color: var(--button-hover-bg-color);
-}
-
-.big-btn:active {
-    scale: 0.95;
-    background-color: var(--button-active-bg-color);
-}
-
 #colormode-btn img {
     max-height: 100%;
     content: var(--colormode-icon);
