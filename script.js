@@ -17,23 +17,31 @@ const totalValueDiv = document.getElementById("total-value");
 const addBitBtn = document.getElementById("add-bit-btn");
 const bitTypeBtn = document.getElementById("bittype-btn");
 const colormodeBtn = document.getElementById("colormode-btn");
-const hideValuesBtn = document.getElementById("hide-values-btn");
 const removeBitBtn = document.getElementById("remove-bit-btn");
 const resetBtn = document.getElementById("reset-btn");
-const showValuesBtn = document.getElementById("show-values-btn");
+const valuesBtn = document.getElementById("values-btn");
 const totalBtn = document.getElementById("total-btn");
 
     // Button EventListeners
     addBitBtn.addEventListener('click', addBitContainer);
-    bitTypeBtn.addEventListener('click', toggleBitType);
-    colormodeBtn.addEventListener('click', toggleColorMode);
-    hideValuesBtn.addEventListener('click', hideAllDecimalValues);
+    bitTypeBtn.addEventListener('change', toggleBitType);
+    colormodeBtn.addEventListener('change', toggleColorMode);
     removeBitBtn.addEventListener('click', removeBitContainer);
     resetBtn.addEventListener('click', resetBits);
-    showValuesBtn.addEventListener('click', showAllBitValues);
-    totalBtn.addEventListener('click', () => {
-        displayTotalValue();
-        toggleElementShowHide(totalContainerDiv);
+    totalBtn.addEventListener('change', function () {
+        if (totalBtn.checked) {
+            displayTotalValue();
+            showElement(totalContainerDiv);
+        } else {
+            hideElement(totalContainerDiv);
+        }
+    });
+    valuesBtn.addEventListener('change', function () {
+        if (valuesBtn.checked) {
+            showAllBitValues();
+        } else {
+            hideAllBitValues();
+        }
     });
 
 
@@ -51,7 +59,7 @@ function hideBitValue(bitValueDiv) {
 function showAllBitValues() {
     bitValueDiv.forEach(bitValueDiv => {showBitValue(bitValueDiv)});
 }
-function hideAllDecimalValues() {
+function hideAllBitValues() {
     bitValueDiv.forEach(bitValueDiv => {hideBitValue(bitValueDiv)});
 }
 
@@ -197,4 +205,13 @@ function toggleElementShowHide(element) {
 // Colormode
 function toggleColorMode() {
     document.documentElement.classList.toggle("lightmode");
+}
+
+// Sidemenu
+function openSideMenu() {
+document.getElementById("side-menu").style.width = "250px";
+}
+
+function closeSideMenu() {
+document.getElementById("side-menu").style.width = "0";
 }
