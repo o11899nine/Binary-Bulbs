@@ -76,50 +76,52 @@
         <button id="reset-btn" class="icon-btn"><i class="fa fa-refresh"></i></button>
         <button id="settings-btn" class="icon-btn" onclick="openSideMenu()"><i class="fa fa-cog"></i></button>
 
-
-    </div>
-
-    </div>
-
-    <!-- Side menu -->
-    <div id="side-menu">
-        <a href="#" class="closebtn" onclick="closeSideMenu()">&times;</a>
-        <div class="side-menu-item">
-            <label class="text-label" for="colormode-btn">Light mode</label>
-            <label class="switch">
-                <input type="checkbox" id="colormode-btn">
-                <span class="slider round"></span>
-            </label>
-        </div>
-        <div class="side-menu-item">
-            <label class="text-label" for="total-btn">Show total</label>
-            <label class="switch">
-                <input type="checkbox" id="total-btn">
-                <span class="slider round"></span>
-            </label>
-        </div>
-        <div class="side-menu-item">
-            <label class="text-label" for="values-btn">Show values</label>
-            <label class="switch">
-                <input type="checkbox" id="values-btn">
-                <span class="slider round"></span>
-            </label>
-        </div>
-        <div class="side-menu-item">
-            <label class="text-label" for="bittype-btn">Show bulbs</label>
-            <label class="switch">
-                <input type="checkbox" id="bittype-btn">
-                <span class="slider round"></span>
-            </label>
-        </div>
-        <div class="side-menu-item d-flex-all-center">
-            <div id="bit-count-container" class="d-flex-all-center">
-                <div id="bit-count" data-bitCount="8">bit count</div>
-                <button id="remove-bit-btn" class="bit-count-btn d-flex-all-center">-</button>
-                <button id="add-bit-btn" class="bit-count-btn d-flex-all-center">+</button>
+        <!-- Side menu -->
+        <div id="side-menu">
+            <div class="side-menu-item">
+                <label class="text-label" for="colormode-btn">Light mode</label>
+                <label class="switch">
+                    <input type="checkbox" id="colormode-btn">
+                    <span class="slider round"></span>
+                </label>
+            </div>
+            <div class="side-menu-item">
+                <label class="text-label" for="total-btn">Show total</label>
+                <label class="switch">
+                    <input type="checkbox" id="total-btn">
+                    <span class="slider round"></span>
+                </label>
+            </div>
+            <div class="side-menu-item">
+                <label class="text-label" for="values-btn">Show values</label>
+                <label class="switch">
+                    <input type="checkbox" id="values-btn">
+                    <span class="slider round"></span>
+                </label>
+            </div>
+            <div class="side-menu-item">
+                <label class="text-label" for="bittype-btn">Show bulbs</label>
+                <label class="switch">
+                    <input type="checkbox" id="bittype-btn">
+                    <span class="slider round"></span>
+                </label>
+            </div>
+            <div class="side-menu-item">
+                    <div id="bit-count" data-bitCount="8">Bit count</div>
+                    <div id="bit-count-buttons" class="d-flex-all-center">
+                        <button id="remove-bit-btn" class="bit-count-btn d-flex-all-center">-</button>
+                        <button id="add-bit-btn" class="bit-count-btn d-flex-all-center">+</button>
+                    </div>
+            </div>
+            <div id="close-btn-wrapper" class="side-menu-item">
+                <button id="close-btn" class="icon-btn" onclick="closeSideMenu()"><i class="fa fa-close"></i></button>
             </div>
         </div>
     </div>
+
+    </div>
+
+    
 
     <!-- Custom JS -->
     <script src="script.js"></script>
